@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title >
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-segment [(ngModel)]="activeFilter"  *ngIf="!onlyDetail" (ionChange)="onFilterChange()">
+        <ion-segment-button value="Active"> Active </ion-segment-button>
+        <ion-segment-button value="Urgent"> Urgent </ion-segment-button>
+        <ion-segment-button value="Dispatched"> Dispatch </ion-segment-button>
+        <ion-segment-button value="Payment Pending"> Payment Pending </ion-segment-button>
+        <ion-segment-button value="Completed"> Completed </ion-segment-button>
+      </ion-segment>
+      <ion-list>
+        <ion-card class="order" *ngFor="let order of orders" (click)="onOrderSelect(order)">
+          <ion-grid>
+            <ion-row class="order-detail">
+              <ion-col col-6 text-left>
+                Order no. {{order.orderNumber}}
+              </ion-col>
+              <ion-col col-6 text-right>
+                {{order.date | date}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-8>
+                <h4>{{order.name}}</h4>
+                <span class="status" [ngClass]="order.status | lowercase">{{order.status}}</span>
+              </ion-col>
+              <ion-col col-4 text-right>
+                <h4>{{order.amount | currency: 'INR'}}</h4>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-list>
+</ion-content>

@@ -1,0 +1,53 @@
+page-home {
+    .toolbar-title{
+        padding: 10px 12px;
+    }
+
+    .cart-button{
+        position: relative;
+        .cart-badge{
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            border-radius: 50%;
+            height: 20px;
+            width: 20px;
+            padding: 4px 3px;
+        }
+    }
+
+    .custom-button{
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        color: #fff;
+        font-size: 1.25rem;
+
+        &.blue{
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+
+        &.green{
+            border-color: #5cb85c;
+            background-color: #5cb85c;
+        }
+        &.orange{
+            border-color: #f0ad4e;
+            background-color: #f0ad4e;
+        }
+        &.red{
+            border-color: #d9534f;
+            background-color: #d9534f;
+        }
+        &.purple{
+            border-color: #d06ce4;
+            background-color: #d06ce4;
+        }
+    }
+
+    .huge {
+        font-size: 40px;
+    }
+}
