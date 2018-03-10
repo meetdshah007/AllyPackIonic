@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -11,32 +11,62 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class ServicesProvider {
+  public API_URL = 'http://localhost/';
+  public options: any;
+  private headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  }
 
   constructor(
     public http: HttpClient,
     public toastCtrl: ToastController,
     public storage: Storage
   ) {
+    this.options = new HttpHeaders(this.headers);
     console.log('Hello ServicesProvider Provider');
   }
 
-  getUserData(){
+  getUserData() {
     return this.storage.get('user');
   }
 
-  setLogged(){
+  setLogged() {
     return this.storage.set('isLoggedIn', true);
   }
 
-  getLogged(){
+  getLogged() {
     return this.storage.get('isLoggedIn');
   }
 
-  setCartData(products:object[]){
+  setCartData(products: object[]) {
     return this.storage.set('cartData', products);
   }
 
-  getCartData(){
+  getCartData() {
     return this.storage.get("cartData");
   }
+
+  /**
+   * API handling
+   * @param url 
+   * @param data 
+   */
+  post(url: string, data: object) {
+    return this.http.post(this.API_URL + url, data, this.options);
+
+  }
+  get(url: string) {
+    return this.http.get(this.API_URL + url, this.options);
+
+  }
+  delete(url: string) {
+    return this.http.delete(this.API_URL + url, this.options);
+
+  }
+  put(url: string, data: object) {
+    return this.http.put(this.API_URL + url, data, this.options);
+
+  }
+  /** API Handling */
 }
