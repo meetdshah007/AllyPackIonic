@@ -14,5 +14,55 @@
 
 
 <ion-content padding>
-
+    <ion-card class="product">
+        <ion-grid>
+          <ion-row class="product-detail">
+            <ion-col col-8>
+              <h2>{{product.name}}</h2>
+              <p>
+                {{product.description}}
+              </p>
+            </ion-col>
+            <ion-col col-4>
+              <img class="img-responsive" src="{{product.imgUrl}}" />
+            </ion-col>
+          </ion-row>
+          <ion-row class="price-section">
+            <ion-col col-4 style="margin: auto 0;">
+              {{product.price | currency: 'INR'}} X
+            </ion-col>
+            <ion-col col-3>
+              <ion-input type="number" [(ngModel)]="product.qty" (ionChange)="runQtyChange($event)" no-padding></ion-input>
+            </ion-col>
+            <ion-col col-5 style="margin: auto 0;text-align:right;">
+              {{product.price * product.qty | currency: 'INR'}}
+            </ion-col>
+          </ion-row>
+          <ion-row margin-top>
+            <h2>Shipment Address:</h2>
+            <p>
+              Baner road, Pune, Maharastra-2001.
+            </p>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+      <div text-right>
+        <ion-item text-right>
+          <ion-label>Subtotal</ion-label>
+          <ion-label>{{subTotal | currency: 'INR'}} </ion-label>
+        </ion-item>
+        <ion-item text-right>
+          <ion-label>Tax (5%)</ion-label>
+          <ion-label>{{taxCharges | currency: 'INR'}} </ion-label>
+        </ion-item>
+        <ion-item text-right>
+          <ion-label>Shipping</ion-label>
+          <ion-label>{{shippingCharges | currency: 'INR'}} </ion-label>
+        </ion-item>
+        <ion-item text-right>
+          <ion-label>Grand Total</ion-label>
+          <ion-label>{{grandTotal | currency: 'INR'}} </ion-label>
+        </ion-item>
+        <button ion-button color="secondary" (click)="onOrderPlace()">Place Order</button>
+      </div>
 </ion-content>

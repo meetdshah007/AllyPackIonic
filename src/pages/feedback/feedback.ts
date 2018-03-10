@@ -24,7 +24,6 @@ export class FeedbackPage {
   ) {
     if(!navParams.data.isFeedback) this.pageType = "Complaint";
     this.product = navParams.data;
-    console.log(this.product);
   }
 
   ionViewDidLoad() {
@@ -38,6 +37,6 @@ export class FeedbackPage {
       message: `Your ${this.pageType} is submitted successfully. Thank you.`
     });
     toast.present();
-    this.navCtrl.setRoot(SearchPage); 
+    this.navCtrl.setRoot(SearchPage);
   }
 }

@@ -40,7 +40,8 @@ export class ProductDetailPage {
   }
 
   buyProduct(){
-    console.log("== Redirection to Place Order page ===>", this.productDetails);    
+    console.log("== Redirection to Place Order page ===>", this.productDetails);
+    this.navCtrl.push('PlaceOrderPage', this.productDetails);
   }
 
   showToast(msg:string){
