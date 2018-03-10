@@ -17,6 +17,8 @@ import { ServicesProvider } from '../providers/services/services';
 
 import { IonicStorageModule } from '@ionic/storage';
 
+import { PipesModule } from '../pipes/pipes.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +33,8 @@ import { IonicStorageModule } from '@ionic/storage';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

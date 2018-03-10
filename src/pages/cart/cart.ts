@@ -31,7 +31,7 @@ export class CartPage {
 
   ionViewDidLoad() {
     this.loadCartItems();
-    // this.updateDatabase();
+     //this.updateDatabase();
   }
 
   loadCartItems(){
