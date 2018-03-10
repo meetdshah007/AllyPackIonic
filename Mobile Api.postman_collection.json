@@ -1,0 +1,185 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Mobile Api",
+		"_postman_id": "91b82092-b1f1-dbf9-25cb-7de0a84c49be",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"request": {
+				"url": "http://localhost/ionicadmin/mobileapi/registration/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Prashant\",\n\t\"lastname\":\"Ghorpade\",\n\t\"permanent_address\":\"Burud galli\",\n\t\"company\":\"Suryaprem\",\n\t\"email\":\"prashant@gmail.com\",\n\t\"contact_number\":\"7276333316\",\n\t\"password\":\"123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"url": "http://localhost/ionicadmin/mobileapi/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"mobile\":\"7276333316\",\n\t\"password\":\"123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"url": "http://localhost/ionicadmin/mobileapi/resetpassword/261",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"oldpassword\":\"123\",\n\t\"newpassword\":\"1234\",\n\t\"cpassword\":\"1234\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDetails",
+			"request": {
+				"url": "http://localhost/ionicadmin/mobileapi/updatedetails/2611",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Prashant\",\n\t\"lastname\":\"Ghorpade\",\n\t\"permanent_address\":\"Burud galli\",\n\t\"company\":\"Suryaprem\",\n\t\"email\":\"prashant@gmail.com\",\n\t\"contact_number\":\"7276333316\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Dashboard",
+			"request": {
+				"url": "http://localhost/ionicadmin/mobileapi/dashboard/2",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "OrderDetails",
+			"request": {
+				"url": "http://localhost/ionicadmin/mobileapi/orderdetail/2/1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "All_Products",
+			"request": {
+				"url": "http://localhost/ionicadmin/mobileapi/allproducts/2",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "AddFeedback",
+			"request": {
+				"url": "http://localhost/ionicadmin/mobileapi/addfeedback/2/1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"feedback\":\"test\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "AddComplaint",
+			"request": {
+				"url": "http://localhost/ionicadmin/mobileapi/addcomplaint/2/1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"complaint\":\"test\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
