@@ -1,17 +1,37 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Search
+      Product Search
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-searchbar [(ngModel)]="myInput" showCancelButton (ionInput)="onInput($event)">
+  </ion-searchbar>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+    <ion-item *ngFor="let product of products">
+      <ion-row>
+        <ion-col col-9 (click)="onSelectProduct(product)">
+          <ion-row class="product-details">
+            <ion-col col-4>
+              <img class="img-responsive" src="{{product.imgUrl}}" />
+            </ion-col>
+            <ion-col col-8>
+              <h2>{{product.name}}</h2>
+              <p style="margin-bottom:10px;">
+                {{product.description | limitTo:[32]}}
+              </p>
+              <h3>{{product.price | currency: 'INR'}}</h3>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col col-3>
+          <button class="cart-button" float-right ion-button (click)="buyProduct(product)">
+            Buy
+          </button>
+        </ion-col>
+      </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>

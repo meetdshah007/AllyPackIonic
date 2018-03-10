@@ -25,7 +25,9 @@ export class HomePage {
 
   loadCartProductsCount(){
     this.services.getCartData().then((products)=>{
-      this.cartProducts = products.length || 0;
+      if(products){
+        this.cartProducts = products.length || 0;
+      }
     });
   }
 
