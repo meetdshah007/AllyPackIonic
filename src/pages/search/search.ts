@@ -44,7 +44,7 @@ export class SearchPage {
   }
 
   buyProduct(product){
-    console.log("== Redirection to Place Order page ===>", product);
+    this.navCtrl.push('PlaceOrderPage', product);
   }
 
 }
