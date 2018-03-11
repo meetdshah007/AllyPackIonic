@@ -15,14 +15,14 @@
         <ion-col col-9 (click)="onSelectProduct(product)">
           <ion-row class="product-details">
             <ion-col col-4>
-              <img class="img-responsive" src="{{product.imgUrl}}" />
+              <img class="img-responsive" src="{{product.pimage}}" />
             </ion-col>
             <ion-col col-8>
-              <h2>{{product.name}}</h2>
+              <h2>{{product.pname}}</h2>
               <p style="margin-bottom:10px;">
-                {{product.description | limitTo:[32]}}
+                {{product.pdesc | limitTo:[32]}}
               </p>
-              <h3>{{product.price | currency: 'INR'}}</h3>
+              <h3>{{product.prate | currency: 'INR'}}</h3>
             </ion-col>
           </ion-row>
         </ion-col>
@@ -33,5 +33,6 @@
         </ion-col>
       </ion-row>
     </ion-item>
+    <h1 *ngIf="!products.length">No Products found</h1>
   </ion-list>
 </ion-content>

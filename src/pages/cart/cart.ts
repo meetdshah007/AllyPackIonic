@@ -51,7 +51,7 @@ export class CartPage {
   calcTotal(){
     this.subTotal = 0;
     this.products.map((product: any)=>{
-      this.subTotal += product.price * product.qty;
+      this.subTotal += product.prate * product.qty;
     });
 
     this.taxCharges = this.subTotal * 0.05;

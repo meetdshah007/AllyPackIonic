@@ -18,30 +18,30 @@
         <ion-grid>
           <ion-row class="product-detail">
             <ion-col col-8>
-              <h2>{{product.name}}</h2>
+              <h2>{{product.pname}}</h2>
               <p>
-                {{product.description}}
+                {{product.pdesc}}
               </p>
             </ion-col>
             <ion-col col-4>
-              <img class="img-responsive" src="{{product.imgUrl}}" />
+              <img class="img-responsive" src="{{product.pimage}}" />
             </ion-col>
           </ion-row>
           <ion-row class="price-section">
-            <ion-col col-4 style="margin: auto 0;">
-              {{product.price | currency: 'INR'}} X
+            <ion-col col-5 style="margin: auto 0;">
+              {{product.prate | currency: 'INR'}} X
             </ion-col>
-            <ion-col col-3>
+            <ion-col col-2>
               <ion-input type="number" [(ngModel)]="product.qty" (ionChange)="runQtyChange($event)" no-padding></ion-input>
             </ion-col>
             <ion-col col-5 style="margin: auto 0;text-align:right;">
-              {{product.price * product.qty | currency: 'INR'}}
+              {{product.prate * product.qty | currency: 'INR'}}
             </ion-col>
           </ion-row>
           <ion-row margin-top>
             <h2>Shipment Address:</h2>
             <p>
-              Baner road, Pune, Maharastra-2001.
+              {{user.shipment_address}}
             </p>
           </ion-row>
         </ion-grid>

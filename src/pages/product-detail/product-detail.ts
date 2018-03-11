@@ -25,11 +25,6 @@ export class ProductDetailPage {
     public toastCtrl: ToastController
   ) {
     this.productDetails = navParams.data;
-    this.productDetails={name: "Nestley Maggied", description: "Brand MAGGI has started “Simply Good” initiative, in line with Nestlé’s global commitment.", price: 40, qty: 1, imgUrl: "assets/imgs/maggie.jpg"};
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductDetailPage');
   }
 
   addToCart(){

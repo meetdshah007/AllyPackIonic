@@ -15,14 +15,14 @@
 
 <ion-content>
   <ion-row>
-    <img class="img-responsive product-image" src="{{productDetails.imgUrl}}"/>
+    <img class="img-responsive product-image" src="{{productDetails.pimage}}"/>
   </ion-row>
-  <ion-row padding>
-    <h2 class="center-aligned">{{productDetails.name}}</h2>
+  <ion-row padding class="product-details">
+    <h2 class="center-aligned">{{productDetails.pname}}</h2>
     <p>
-      {{productDetails.description}}
+      {{productDetails.pdesc}}
     </p>
-    <h3 class="price-tag">Price: {{productDetails.price | currency: 'INR'}}</h3>
+    <h3 class="price-tag">Price: {{productDetails.prate | currency: 'INR'}}</h3>
   </ion-row>
   <ion-row>
     <ion-col col-6>
@@ -35,12 +35,12 @@
           Place Order
         </button>
     </ion-col>
-    <ion-col col-6>
+    <ion-col col-6 *ngIf="productDetails.orderId">
         <button class="cart-button" full ion-button (click)="goFeedBack(true)">
           Feedback
         </button>
     </ion-col>
-    <ion-col col-6>
+    <ion-col col-6 *ngIf="productDetails.orderId">
         <button class="cart-button" full ion-button (click)="goFeedBack(false)">
           Complaint
         </button>

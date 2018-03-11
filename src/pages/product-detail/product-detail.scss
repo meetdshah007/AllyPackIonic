@@ -12,4 +12,10 @@ page-product-detail {
     .price-tag{
         color: #5cb85c;
     }
+
+    .product-details{
+        h2, p{
+            width: 100%;
+        }
+    }
 }
