@@ -13,23 +13,34 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label color="primary" stacked>Old Password</ion-label>
-    <ion-input type="password" placeholder="Enter Old Password"></ion-input>
-  </ion-item>
+  <form name="resetForm" [formGroup]="resetForm" novalidate (ngSubmit)="doUpdate()">
+    <ion-item>
+      <ion-label color="primary" stacked>Old Password</ion-label>
+      <ion-input type="password" placeholder="Enter Old Password" formControlName="oldpassword"></ion-input>
+    </ion-item>
+    <ion-item class=" error-item" *ngIf="(resetForm.controls.oldpassword.touched && !resetForm.controls.oldpassword.valid) || (submited && !resetForm.controls.oldpassword.valid)">
+      <span *ngIf="resetForm.controls.oldpassword.errors.required">Password is required</span>
+    </ion-item>
 
-  <ion-item>
-    <ion-label color="primary" stacked>New Password</ion-label>
-    <ion-input type="password" placeholder="Enter New Password"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>New Password</ion-label>
+      <ion-input type="password" placeholder="Enter New Password" formControlName="newpassword"></ion-input>
+    </ion-item>
+    <ion-item class=" error-item" *ngIf="(resetForm.controls.newpassword.touched && !resetForm.controls.newpassword.valid) || (submited && !resetForm.controls.newpassword.valid)">
+      <span *ngIf="resetForm.controls.newpassword.errors.required">New Password is required</span>
+    </ion-item>
 
-  <ion-item>
-    <ion-label color="primary" stacked>Re-Enter Password</ion-label>
-    <ion-input type="password" placeholder="Enter Re-Enter Password"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Confirm Password</ion-label>
+      <ion-input type="password" placeholder="Confirm the Password" formControlName="cpassword"></ion-input>
+    </ion-item>
+    <ion-item class=" error-item" *ngIf="(resetForm.controls.cpassword.touched && !resetForm.controls.cpassword.valid) || (submited && !resetForm.controls.cpassword.valid)">
+      <span *ngIf="resetForm.controls.cpassword.errors.required">Confirm Password is required</span>
+      <span *ngIf="!resetForm.controls.cpassword.errors.required && resetForm.controls.cpassword.errors.equalTo">Confirm Password Mismatch</span>
+    </ion-item>
 
-  <ion-item text-center no-lines>
-    <button ion-button large (click)="doUpdate()">Change</button>
-  </ion-item>
-
+    <ion-item text-center no-lines>
+      <button type="submit" ion-button large>Change</button>
+    </ion-item>
+  </form>
 </ion-content>

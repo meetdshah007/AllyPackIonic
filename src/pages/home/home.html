@@ -13,36 +13,36 @@
 
 <ion-content padding>
   <h2>Welcome to Ally pack!</h2>
-    <ion-row>
-      <ion-col col-6>
-        <div class="custom-button blue" (click)="onSelectOrder('Active')">
-          <div class="huge">5</div>
-          <div>Active Orders</div>
-        </div>
-      </ion-col>
-      <ion-col col-6>
-        <div class="custom-button red" (click)="onSelectOrder('Urgent')">
-          <div class="huge">5</div>
-          <div>Urgent Orders</div>
-        </div>
-      </ion-col>
-      <ion-col col-6>
-        <div class="custom-button orange" (click)="onSelectOrder('Completed')">
-          <div class="huge">5</div>
-          <div>Completed Orders</div>
-        </div>
-      </ion-col>
-      <ion-col col-6>
-        <div class="custom-button purple" (click)="onSelectOrder('Payment Pending')">
-          <div class="huge">5</div>
-          <div>Payment Pending</div>
-        </div>
-      </ion-col>
-      <ion-col col-6>
-          <div class="custom-button green" (click)="onSelectOrder('Dispatch')">
-            <div class="huge">5</div>
-            <div>Dispatch Orders</div>
-          </div>
-        </ion-col>
-    </ion-row>
+  <ion-row>
+    <ion-col col-6>
+      <div class="custom-button blue" (click)="onSelectOrder('Open')">
+        <div class="huge">{{orders.noOfOpenOrder}}</div>
+        <div>Open Orders</div>
+      </div>
+    </ion-col>
+    <ion-col col-6>
+      <div class="custom-button red" (click)="onSelectOrder('Urgent')">
+        <div class="huge">{{orders.noOfUrgentOrders}}</div>
+        <div>Urgent Orders</div>
+      </div>
+    </ion-col>
+    <ion-col col-6>
+      <div class="custom-button orange" (click)="onSelectOrder('Completed')">
+        <div class="huge">{{orders.noOfCompleted}}</div>
+        <div>Completed Orders</div>
+      </div>
+    </ion-col>
+    <ion-col col-6>
+      <div class="custom-button purple" (click)="onSelectOrder('Payment Pending')">
+        <div class="huge">{{orders.noOfAwaitingPayment}}</div>
+        <div>Payment Pending</div>
+      </div>
+    </ion-col>
+    <ion-col col-6>
+      <div class="custom-button green" (click)="onSelectOrder('Dispatch')">
+        <div class="huge">{{orders.noOfDispatchedOrder}}</div>
+        <div>Dispatch Orders</div>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>

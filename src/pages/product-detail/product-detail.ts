@@ -34,7 +34,8 @@ export class ProductDetailPage {
 
   addToCart(){
     this.services.getCartData().then(data =>{
-      data.push(this.productDetails);
+      if(!data) data = [this.productDetails];
+      else data.push(this.productDetails);
       this.services.setCartData(data).then(()=>this.showToast("Product added to cart"));
     });
   }

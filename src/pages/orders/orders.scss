@@ -10,7 +10,7 @@ page-orders {
             &.completed{
                 color: #5cb85c;
             }
-            &.active{
+            &.open{
                 color: #337ab7;
             }
             &.dispatched{

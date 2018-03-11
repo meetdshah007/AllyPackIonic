@@ -13,26 +13,34 @@
 </ion-header>
 
 <ion-content padding>
+  <form name="userDetail" [formGroup]="userDetail" novalidate (ngSubmit)="doUpdate()">
     <ion-list>
-        <ion-item>
-          <ion-label color="primary" stacked>Name</ion-label>
-          <ion-input type="text" placeholder="Enter Full Name"></ion-input>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label color="primary" stacked>Company Name</ion-label>
-          <ion-input type="text" placeholder="Enter Company Name"></ion-input>
-        </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Full Name</ion-label>
+        <ion-input type="text" placeholder="Enter Full Name" [(ngModel)]="userData.firstname" formControlName="firstname"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(userDetail.controls.firstname.touched && !userDetail.controls.firstname.valid) || (submited && !userDetail.controls.firstname.valid)">
+        <span *ngIf="userDetail.controls.firstname.errors.required">Full Name is required</span>
+      </ion-item>
 
-        <ion-item>
-          <ion-label color="primary" stacked>Shipment Addresss</ion-label>
-          <ion-textarea type="text" placeholder="Enter Shipment Address"></ion-textarea>
-        </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Company Name</ion-label>
+        <ion-input type="text" placeholder="Enter Company Name" [(ngModel)]="userData.company" formControlName="company"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(userDetail.controls.company.touched && !userDetail.controls.company.valid) || (submited && !userDetail.controls.company.valid)">
+        <span *ngIf="userDetail.controls.company.errors.required">Company Name is required</span>
+      </ion-item>
 
-        <ion-item text-center no-lines>
-          <button ion-button padding (click)="doUpdate()">Update</button>
-           
-          <button ion-button (click)="goToPage('ResetPage')">Change Password</button>
-        </ion-item>
-    </ion-list>    
+      <ion-item>
+        <ion-label color="primary" stacked>Shipment Addresss</ion-label>
+        <ion-textarea type="text" placeholder="Enter Shipment Address" [(ngModel)]="userData.shipment_address" formControlName="shipment_address"></ion-textarea>
+      </ion-item>
+
+      <ion-item text-center no-lines>
+        <button type="submit" ion-button padding>Update</button>
+
+        <button type="button" ion-button (click)="goToPage('ResetPage')">Change Password</button>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>

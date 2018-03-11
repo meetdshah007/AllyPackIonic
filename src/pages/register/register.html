@@ -16,7 +16,7 @@
   <form name="registration" [formGroup]="registration" novalidate (ngSubmit)="doRegister()">
     <ion-list>
       <ion-item>
-        <ion-label color="primary" stacked>Name</ion-label>
+        <ion-label color="primary" stacked>Full Name</ion-label>
         <ion-input type="text" placeholder="Enter Full Name" formControlName="firstname"></ion-input>
       </ion-item>
       <ion-item class=" error-item" *ngIf="(registration.controls.firstname.touched && !registration.controls.firstname.valid) || (submited && !registration.controls.firstname.valid)">
