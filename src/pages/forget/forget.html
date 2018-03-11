@@ -13,15 +13,20 @@
 </ion-header>
 
 <ion-content padding>
+    <form name="forget" [formGroup]="forget" novalidate (ngSubmit)="doSubmit()">  
   <ion-list>
     <ion-item>
       <ion-label color="primary" stacked>Email</ion-label>
-      <ion-input type="email" placeholder="Enter Email Address"></ion-input>
+      <ion-input type="email" placeholder="Enter Email ID" formControlName="email"></ion-input>
     </ion-item>
+    <ion-item class=" error-item" *ngIf="(forget.controls.email.touched && !forget.controls.email.valid) || (submited && !forget.controls.email.valid)">
+        <span *ngIf="forget.controls.email.errors.required">Email Id is required</span>
+        <span *ngIf="!forget.controls.email.errors.required && forget.controls.email.errors.email">Email Id is not valid</span>        
+      </ion-item>
   
     <ion-item text-center no-lines>
-      <button ion-button large (click)="doSubmit()">Submit</button>
+      <button ion-button large>Submit</button>
     </ion-item>
-    
   </ion-list>
+  </form>
 </ion-content>

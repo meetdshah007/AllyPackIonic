@@ -14,28 +14,37 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label color="primary" stacked>Contact</ion-label>
-      <ion-input type="tel" placeholder="Enter Contact"></ion-input>
-    </ion-item>
+  <form name="login" [formGroup]="login" novalidate (ngSubmit)="doLogin()">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" stacked>Contact</ion-label>
+        <ion-input type="tel" placeholder="Enter Contact" formControlName="mobile"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(login.controls.mobile.touched && !login.controls.mobile.valid) || (submited && !login.controls.mobile.valid)">
+        <span *ngIf="login.controls.mobile.errors.required">Contact Number is required</span>
+        <span *ngIf="!login.controls.mobile.errors.required && (login.controls.mobile.errors.minlength || login.controls.mobile.errors.maxlength)">Contact Number is not valid</span>
+      </ion-item>
 
-    <ion-item>
-      <ion-label color="primary" stacked>Password</ion-label>
-      <ion-input type="password" placeholder="Enter Password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Password</ion-label>
+        <ion-input type="password" placeholder="Enter Password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(login.controls.password.touched && !login.controls.password.valid) || (submited && !login.controls.password.valid)">
+        <span *ngIf="login.controls.password.errors.required">Password is required</span>
+      </ion-item>
 
-    <ion-item text-right no-lines>
-      <button ion-button strong clear (click)="goToPage('ForgetPage')">Forget Password</button>
-    </ion-item>
+      <ion-item text-right no-lines>
+        <button type="button" ion-button strong clear (click)="goToPage('ForgetPage')">Forget Password</button>
+      </ion-item>
 
-    <ion-item text-center no-lines>
-      <button ion-button large (click)="doLogin()">Login</button>
-    </ion-item>
+      <ion-item text-center no-lines>
+        <button ion-button large>Login</button>
+      </ion-item>
 
-    <ion-item text-center no-lines>
-      <button ion-button large outline (click)="goToPage('RegisterPage')">Register Now!</button>
-    </ion-item>
-    
-  </ion-list>
+      <ion-item text-center no-lines>
+        <button type="button" ion-button large outline (click)="goToPage('RegisterPage')">Register Now!</button>
+      </ion-item>
+
+    </ion-list>
+  </form>
 </ion-content>

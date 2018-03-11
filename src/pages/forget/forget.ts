@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { ServicesProvider } from '../../providers/services/services';
 /**
@@ -15,13 +16,19 @@ import { ServicesProvider } from '../../providers/services/services';
   templateUrl: 'forget.html',
 })
 export class ForgetPage {
-
+  forget: FormGroup;
+  submited: boolean = false;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public formBuilder: FormBuilder,
     public services: ServicesProvider,
     public toastCtrl: ToastController
   ) {
+    this.forget = formBuilder.group({
+     email: ['', Validators.compose([Validators.required, Validators.email])]
+      
+    });
   }
 
   ionViewDidLoad() {
@@ -30,6 +37,10 @@ export class ForgetPage {
 
 
   doSubmit(){
+    if (!this.forget.valid) {
+      this.submited = true;
+      return false;
+    }
     let toast = this.toastCtrl.create({
       duration: 3000,
       position: 'bottom',

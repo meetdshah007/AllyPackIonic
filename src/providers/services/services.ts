@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ToastController } from 'ionic-angular';
+import { ToastController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 /*
@@ -11,24 +11,39 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class ServicesProvider {
-  public API_URL = 'http://localhost/';
+  public API_URL = 'http://viewurdemo.com/api_allypack_app/mobileapi/';
   public options: any;
   private headers = {
     "Accept": "application/json",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods":'POST, GET, OPTIONS, PUT'
   }
 
   constructor(
     public http: HttpClient,
     public toastCtrl: ToastController,
-    public storage: Storage
+    public storage: Storage,
+    public alertCtrl: AlertController    
   ) {
     this.options = new HttpHeaders(this.headers);
     console.log('Hello ServicesProvider Provider');
   }
 
+  createWaring(title: string, message: string) {
+    let alert = this.alertCtrl.create({
+        title: title,
+        subTitle: message,
+        buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
   getUserData() {
     return this.storage.get('user');
+  }
+  setUserData(data:any){
+    return this.storage.set('user', data);
   }
 
   setLogged() {

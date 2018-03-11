@@ -13,47 +13,67 @@
 </ion-header>
 
 <ion-content padding>
-
-  <ion-list>
-    <ion-item>
-      <ion-label color="primary" stacked>Name</ion-label>
-      <ion-input type="text" placeholder="Enter Full Name"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label color="primary" stacked>Company Name</ion-label>
-      <ion-input type="text" placeholder="Enter Company Name"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label color="primary" stacked>Address</ion-label>
-        <ion-textarea type="text" placeholder="Enter Address"></ion-textarea>
+  <form name="registration" [formGroup]="registration" novalidate (ngSubmit)="doRegister()">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" stacked>Name</ion-label>
+        <ion-input type="text" placeholder="Enter Full Name" formControlName="firstname"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(registration.controls.firstname.touched && !registration.controls.firstname.valid) || (submited && !registration.controls.firstname.valid)">
+        <span *ngIf="registration.controls.firstname.errors.required">Full Name is required</span>
       </ion-item>
 
       <ion-item>
-          <ion-label color="primary" stacked>Shipment Addresss</ion-label>
-          <ion-textarea type="text" placeholder="Enter Shipment Address"></ion-textarea>
-        </ion-item>
-
-    <ion-item>
-      <ion-label color="primary" stacked>Contact</ion-label>
-      <ion-input type="tel" placeholder="Enter Contact"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label color="primary" stacked>Email</ion-label>
-        <ion-input type="email" placeholder="Enter Email Address"></ion-input>
+        <ion-label color="primary" stacked>Company Name</ion-label>
+        <ion-input type="text" placeholder="Enter Company Name" formControlName="company"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(registration.controls.company.touched && !registration.controls.company.valid) || (submited && !registration.controls.company.valid)">
+        <span *ngIf="registration.controls.company.errors.required">Company Name is required</span>
       </ion-item>
 
-    <ion-item>
-      <ion-label color="primary" stacked>Password</ion-label>
-      <ion-input type="password" placeholder="Enter Password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Address</ion-label>
+        <ion-textarea type="text" placeholder="Enter Address" formControlName="permanent_address"></ion-textarea>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(registration.controls.permanent_address.touched && !registration.controls.permanent_address.valid) || (submited && !registration.controls.permanent_address.valid)">
+        <span *ngIf="registration.controls.permanent_address.errors.required">Permanent Address is required</span>
+      </ion-item>
 
-    <ion-item text-center no-lines>
-      <button ion-button large (click)="doRegister()">Register</button>
-    </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Shipment Addresss</ion-label>
+        <ion-textarea type="text" placeholder="Enter Shipment Address" formControlName="shipment_address"></ion-textarea>
+      </ion-item>
 
-  </ion-list>
+      <ion-item>
+        <ion-label color="primary" stacked>Contact</ion-label>
+        <ion-input type="number" placeholder="Enter Contact" formControlName="contact_number"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(registration.controls.contact_number.touched && !registration.controls.contact_number.valid) || (submited && !registration.controls.contact_number.valid)">
+        <span *ngIf="registration.controls.contact_number.errors.required">Contact Number is required</span>
+        <span *ngIf="!registration.controls.contact_number.errors.required && (registration.controls.contact_number.errors.minlength || registration.controls.contact_number.errors.maxlength)">Contact Number is not valid</span>
+      </ion-item>
 
+      <ion-item>
+        <ion-label color="primary" stacked>Email</ion-label>
+        <ion-input type="email" placeholder="Enter Email ID" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(registration.controls.email.touched && !registration.controls.email.valid) || (submited && !registration.controls.email.valid)">
+        <span *ngIf="registration.controls.email.errors.required">Email Id is required</span>
+        <span *ngIf="!registration.controls.email.errors.required && registration.controls.email.errors.email">Email Id is not valid</span>        
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" stacked>Password</ion-label>
+        <ion-input type="password" placeholder="Enter Password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(registration.controls.password.touched && !registration.controls.password.valid) || (submited && !registration.controls.password.valid)">
+        <span *ngIf="registration.controls.password.errors.required">Password is required</span>
+      </ion-item>
+
+      <ion-item text-center no-lines>
+        <button type="submit" ion-button large>Register</button>
+      </ion-item>
+
+    </ion-list>
+  </form>
 </ion-content>
