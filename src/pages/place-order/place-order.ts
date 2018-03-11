@@ -21,7 +21,9 @@ export class PlaceOrderPage {
   shippingCharges: number = 20;
   taxCharges: number = this.subTotal * 0.05;
   grandTotal: number = this.subTotal + this.shippingCharges + this.taxCharges;
-  user: object;
+  user: object = {
+    shipment_address: ''
+  };
 
   constructor(
     public navCtrl: NavController,
@@ -31,6 +33,7 @@ export class PlaceOrderPage {
   ) {
     services.getUserData().then((data:any )=>{
       this.user = data;
+      console.log('====>',data);
     });
     this.product = navParams.data;
     this.product['qty'] = 1;

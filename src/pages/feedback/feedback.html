@@ -17,19 +17,19 @@
   <ion-card>
     <ion-row>
       <ion-col col-4>
-        <img class="img-responsive small-image" src="{{product.imgUrl}}" />
+        <img class="img-responsive small-image" src="{{product.pimage}}" />
       </ion-col>
       <ion-col col-8>
-        <h2>{{product.name}}</h2>
+        <h2>{{product.pname}}</h2>
         <p style="margin-bottom:10px;">
-          {{product.description | limitTo:[32]}}
+          {{product.pdesc | limitTo:[32]}}
         </p>
       </ion-col>
     </ion-row>
   </ion-card>
   <ion-list text-center>
     <ion-item>
-      <ion-textarea placeholder="Enter your {{pageType}}"></ion-textarea>
+      <ion-textarea placeholder="Enter your {{pageType}}" [(ngModel)]="reason"></ion-textarea>
     </ion-item>
     <button ion-button padding large (click)="doUpdate()">Submit</button>
   </ion-list>

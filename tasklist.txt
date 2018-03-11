@@ -1,0 +1,7 @@
+-- Pending Task list ---
+1. Orders page show the product name.
+2. Forget Password API integration.
+3. Place order api integration.
+4. Shipment stuff sort out/Implement in API.
+5. FeedBack/Complaint Feature flow if user goes from Orders => API integration.
+6. Loader to show for all AJAX requests.

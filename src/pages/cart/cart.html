@@ -28,10 +28,10 @@
         </ion-col>
       </ion-row>
       <ion-row class="price-section">
-        <ion-col col-4 style="margin: auto 0;">
+        <ion-col col-5 style="margin: auto 0;">
           {{product.prate | currency: 'INR'}} X
         </ion-col>
-        <ion-col col-3>
+        <ion-col col-2>
           <ion-input type="number" [(ngModel)]="product.qty" (ionChange)="runQtyChange($event, product)" no-padding></ion-input>
         </ion-col>
         <ion-col col-5 style="margin: auto 0;text-align:right;">
