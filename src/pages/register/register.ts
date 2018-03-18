@@ -31,7 +31,6 @@ export class RegisterPage {
       firstname: ['', Validators.compose([Validators.required])],
       company: ['', Validators.compose([Validators.required])],
       permanent_address: ['', Validators.compose([Validators.required])],
-      shipment_address: [''],
       contact_number: [null, Validators.compose([Validators.required, Validators.pattern("[0-9]*"), Validators.minLength(10), Validators.maxLength(10)])],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required])]
@@ -50,7 +49,6 @@ export class RegisterPage {
     this.registration.value['lastname'] = this.registration.value.firstname.split(' ')[1] || '';
     this.registration.value['firstname'] = this.registration.value.firstname.split(' ')[0];
     this.services.post('registration/',this.registration.value).subscribe((res: any) => {
-      console.log("data", res);
       if(res.status === "success"){
         this.presentToast();
       }else{

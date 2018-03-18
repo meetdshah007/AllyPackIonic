@@ -24,7 +24,7 @@
           </p>
         </ion-col>
         <ion-col col-4>
-          <img class="img-responsive" src="{{product.pimage}}" />
+          <img class="img-responsive" src="{{product.pimage}}" (error)="onImageLoadError($event)"/>
         </ion-col>
       </ion-row>
       <ion-row class="price-section">

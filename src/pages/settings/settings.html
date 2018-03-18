@@ -32,8 +32,11 @@
       </ion-item>
 
       <ion-item>
-        <ion-label color="primary" stacked>Shipment Addresss</ion-label>
-        <ion-textarea type="text" placeholder="Enter Shipment Address" [(ngModel)]="userData.shipment_address" formControlName="shipment_address"></ion-textarea>
+        <ion-label color="primary" stacked>Permanent Addresss</ion-label>
+        <ion-textarea type="text" placeholder="Enter Permanent Address" [(ngModel)]="userData.uaddress" formControlName="uaddress"></ion-textarea>
+      </ion-item>
+      <ion-item class=" error-item" *ngIf="(userDetail.controls.uaddress.touched && !userDetail.controls.uaddress.valid) || (submited && !userDetail.controls.uaddress.valid)">
+        <span *ngIf="userDetail.controls.uaddress.errors.required">Permanent Address is required</span>
       </ion-item>
 
       <ion-item text-center no-lines>

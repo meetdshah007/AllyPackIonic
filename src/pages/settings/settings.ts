@@ -21,7 +21,7 @@ export class SettingsPage {
   userData: object = {
     firstname: '',
     company: '',
-    shipment_address: ''
+    uaddress: ''
   };
   userDetail: FormGroup;
   submited: boolean = false;
@@ -36,7 +36,7 @@ export class SettingsPage {
     this.userDetail = formBuilder.group({
       firstname: ['', Validators.compose([Validators.required])],
       company: ['', Validators.compose([Validators.required])],
-      shipment_address: ['']
+      uaddress: ['', Validators.compose([Validators.required])]
     });
     services.getUserData().then((data:any )=>{
       this.uid = data.uid;
@@ -61,7 +61,7 @@ export class SettingsPage {
     this.services.post(`updatedetails/${this.uid}`,this.userDetail.value).subscribe((res: any) => {
       this.userData['ulast_name'] = this.userDetail.value['lastname'];
       this.userData['ufirst_name'] = this.userDetail.value['firstname'];
-      this.userData['shipment_address'] = this.userDetail.value['shipment_address'];
+      this.userData['uaddress'] = this.userDetail.value['permanent_address'];
       if(res.status === "success"){
         this.services.setUserData(this.userData);
         this.presentToast();

@@ -56,12 +56,20 @@ export class SearchPage {
     });
   }
 
+  loadImage(product){
+    return `${this.services.getImageUrl()}${product.pimage}`;
+  }
+
   onSelectProduct(product){
-    this.navCtrl.push('ProductDetailPage', product);
+    this.navCtrl.push('ProductDetailPage', JSON.parse(JSON.stringify(product)));
   }
 
   buyProduct(product){
     this.navCtrl.push('PlaceOrderPage', product);
+  }
+
+  onImageLoadError(event){
+    event.target.src = 'assets/imgs/product.jpg';
   }
 
 }

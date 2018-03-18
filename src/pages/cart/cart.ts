@@ -36,6 +36,12 @@ export class CartPage {
 
   loadCartItems(){
     this.services.getCartData().then((products)=>{
+      if(products && products.length){
+          products.map(product =>{
+            product['pimage'] = this.services.getImageUrl() + product.pimage;
+            product['qty'] = product['qty'] || 1;
+          });
+      }
       this.products = products || [];
       this.calcTotal();
     });
@@ -92,6 +98,10 @@ export class CartPage {
     });
     toast.present();
     this.navCtrl.pop();
+  }
+
+  onImageLoadError(event){
+    event.target.src = 'assets/imgs/product.jpg';
   }
 
   dummyData = [{

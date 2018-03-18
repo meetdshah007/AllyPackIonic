@@ -11,7 +11,9 @@ import { Storage } from '@ionic/storage';
 */
 @Injectable()
 export class ServicesProvider {
-  public API_URL = 'http://viewurdemo.com/api_allypack_app/mobileapi/';
+  public BASE_URL = `http://viewurdemo.com/api_allypack_app/`;
+  public API_URL = `${this.BASE_URL}mobileapi/`;
+  public IMAGE_URL = `${this.BASE_URL}images/`;
   public options: any;
   private headers = {
     "Accept": "application/json",
@@ -42,6 +44,11 @@ export class ServicesProvider {
   getUserData() {
     return this.storage.get('user');
   }
+
+  getImageUrl(){
+    return this.IMAGE_URL;
+  }
+
   setUserData(data:any){
     return this.storage.set('user', data);
   }
@@ -84,4 +91,44 @@ export class ServicesProvider {
 
   }
   /** API Handling */
+
+  alertWithInput(title, inputs, btnText, action, scope) {
+    let alert = this.alertCtrl.create({
+        title: title,
+        inputs: inputs || [],
+        buttons: [{
+            text: 'Cancel',
+            role: 'cancel',
+            handler: data => {}
+          }, {
+            text: btnText,
+            handler: data => {
+              action(data, scope);
+            }
+          }]
+        });
+
+        alert.present();
+        return false;
+  }
+
+  presentConfirm(title, message, action){
+    let alert = this.alertCtrl.create({
+      title: title,
+      message: message || '',
+      buttons: [{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {}
+        }, {
+          text: 'Confirm',
+          handler: data => {
+            action();
+          }
+        }]
+      });
+
+      alert.present();
+      return false;
+  }
 }

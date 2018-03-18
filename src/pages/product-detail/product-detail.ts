@@ -16,7 +16,10 @@ import { ServicesProvider } from '../../providers/services/services';
   templateUrl: 'product-detail.html',
 })
 export class ProductDetailPage {
-  private productDetails: object;
+  private productDetails: object = {
+    pimage:''
+  };
+  productImage: string = '';
 
   constructor(
     public navCtrl: NavController,
@@ -25,6 +28,10 @@ export class ProductDetailPage {
     public toastCtrl: ToastController
   ) {
     this.productDetails = navParams.data;
+    let imagePath = this.services.getImageUrl();
+    if(this.navParams.data['pimage'] && this.navParams.data['pimage'].indexOf(imagePath) == -1){  
+      this.productDetails['pimage'] = `${imagePath}${this.navParams.data['pimage']}`;
+    }
   }
 
   addToCart(){
@@ -36,8 +43,7 @@ export class ProductDetailPage {
   }
 
   buyProduct(){
-    console.log("== Redirection to Place Order page ===>", this.productDetails);
-    this.navCtrl.push('PlaceOrderPage', this.productDetails);
+    this.navCtrl.push('PlaceOrderPage', JSON.parse(JSON.stringify(this.productDetails)));
   }
 
   showToast(msg:string){
@@ -53,5 +59,9 @@ export class ProductDetailPage {
   goFeedBack(isFeedback){
     this.productDetails['isFeedback'] = isFeedback;
     this.navCtrl.push('FeedbackPage',this.productDetails);
+  }
+
+  onImageLoadError(event){
+    event.target.src = 'assets/imgs/product.jpg';
   }
 }

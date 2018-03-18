@@ -15,7 +15,7 @@
         <ion-col col-9 (click)="onSelectProduct(product)">
           <ion-row class="product-details">
             <ion-col col-4>
-              <img class="img-responsive" src="{{product.pimage}}" />
+              <img class="img-responsive" src="{{loadImage(product)}}" (error)="onImageLoadError($event)"/>
             </ion-col>
             <ion-col col-8>
               <h2>{{product.pname}}</h2>

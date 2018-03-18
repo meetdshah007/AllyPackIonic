@@ -15,7 +15,7 @@
 
 <ion-content>
   <ion-row>
-    <img class="img-responsive product-image" src="{{productDetails.pimage}}"/>
+    <img class="img-responsive product-image" src="{{productDetails.pimage}}" (error)="onImageLoadError($event)"/>
   </ion-row>
   <ion-row padding class="product-details">
     <h2 class="center-aligned">{{productDetails.pname}}</h2>

@@ -24,7 +24,7 @@
               </p>
             </ion-col>
             <ion-col col-4>
-              <img class="img-responsive" src="{{product.pimage}}" />
+              <img class="img-responsive" src="{{product.pimage}}" (error)="onImageLoadError($event)"/>
             </ion-col>
           </ion-row>
           <ion-row class="price-section">
@@ -39,9 +39,9 @@
             </ion-col>
           </ion-row>
           <ion-row margin-top>
-            <h2 style="width:100%;">Shipment Address:</h2>
+            <h2 style="width:100%;">Shipment Address: <span float-right (click)="changeAddress()"><ion-icon ios="md-create" md="md-create" color="primary"></ion-icon></span></h2>
             <p style="width:100%;">
-              {{user.shipment_address}}
+              {{user.uaddress}}
             </p>
           </ion-row>
         </ion-grid>
