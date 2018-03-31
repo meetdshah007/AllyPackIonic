@@ -1,5 +1,5 @@
 -- Pending Task list ---
-1. Orders detail page from orders view ->  Show entire details with Feedback/Complaint.
+1. Feedback/Complaint buttons and Implementation.
 3. Place order api integration.
 5. Loader to show for all AJAX requests.
 

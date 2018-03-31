@@ -63,7 +63,6 @@ export class OrdersPage {
 
   onFilterChange(){
     const activeKey = this.filters[this.activeFilter];
-    console.log("=== AcitveKey ===>", activeKey, " === ActiveFilter ====>", this.activeFilter);
     this.orders = this.orderList.filter((order: any)=>{
       if(order.ostatus === activeKey)
         return order;
@@ -71,6 +70,6 @@ export class OrdersPage {
   }
 
   onOrderSelect(orderDetail){
-    console.log("== Selected Order===>", orderDetail);
+    this.navCtrl.push('OrderDetailPage', orderDetail);
   }
 }

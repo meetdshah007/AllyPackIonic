@@ -1,3 +1,40 @@
 page-order-detail {
-
+    .toolbar-title{
+        padding: 10px 12px;
+    }
+    .button-ios{
+        height: auto;
+    }
+    .order{
+        .order-detail{
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        h4,h5{
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        h5{
+            font-size: 1.2rem;
+        }
+    }
+    .status{
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        &.completed{
+            color: #5cb85c;
+        }
+        &.open{
+            color: #337ab7;
+        }
+        &.dispatched{
+            color: #f0ad4e;
+        }
+        &.urgent{
+            color: #d9534f;
+        }
+        &.payment{
+            color: #d06ce4;
+        }
+    }
 }
