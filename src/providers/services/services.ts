@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage';
 export class ServicesProvider {
   public BASE_URL = `http://viewurdemo.com/api_allypack_app/`;
   public API_URL = `${this.BASE_URL}mobileapi/`;
-  public IMAGE_URL = `${this.BASE_URL}images/`;
+  public IMAGE_URL = `${this.BASE_URL}images/prodimages/`;
   public options: any;
   private headers = {
     "Accept": "application/json",
